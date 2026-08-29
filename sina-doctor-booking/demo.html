@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نوبت دهی پزشکان سینا - دمو</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+<link rel="stylesheet" href="public/css/public.css">
+<style>
+body { background:#f8fafc; margin:0; padding:0; font-family:'Vazirmatn', sans-serif; }
+.demo-header {
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+.demo-header h1 { margin:0 0 10px; font-size:28px; }
+.demo-header p { margin:0; opacity:0.9; }
+.demo-nav {
+  background:white;
+  border-bottom:1px solid #e2e8f0;
+  padding:12px 20px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.demo-nav button {
+  padding:8px 16px;
+  border-radius:8px;
+  border:1px solid #e2e8f0;
+  background:white;
+  cursor:pointer;
+  font-family:inherit;
+  font-weight:600;
+}
+.demo-nav button.active { background:#0ea5e9; color:white; border-color:#0ea5e9; }
+.hidden { display:none !important; }
+</style>
+</head>
+<body>
+
+<div class="demo-header">
+  <h1>🏥 سیستم نوبت دهی پزشکان سینا</h1>
+  <p>دمو کامل افزونه وردپرسی - پنل بیمار، منشی و پرینت حرارتی</p>
+  <p style="font-size:12px; margin-top:8px; opacity:0.8;">این یک پیش‌نمایش استاتیک است - در وردپرس واقعی به دیتابیس وصل می‌شود</p>
+</div>
+
+<div class="demo-nav">
+  <button class="active" data-tab="booking">📅 رزرو نوبت (بیمار)</button>
+  <button data-tab="patient">👤 پنل بیمار</button>
+  <button data-tab="secretary">👩‍💼 پنل منشی</button>
+  <button data-tab="print">🖨️ پرینت حرارتی</button>
+</div>
+
+<!-- BOOKING TAB -->
+<div id="tab-booking" class="sina-booking-wrapper">
+  <div class="sina-announcements">
+    <div class="sina-announcement info"><strong>اطلاعیه:</strong> لطفا 15 دقیقه قبل از نوبت در مطب حضور داشته باشید. همراه داشتن کارت ملی الزامی است.</div>
+    <div class="sina-announcement warning"><strong>دکتر سارا احمدی:</strong> پنجشنبه 1404/05/20 در مطب حضور ندارند</div>
+  </div>
+
+  <div class="sina-booking-steps">
+    <div class="sina-step active" data-step="1"><span class="sina-step-number">1</span> انتخاب پزشک</div>
+    <div class="sina-step" data-step="2"><span class="sina-step-number">2</span> انتخاب روز</div>
+    <div class="sina-step" data-step="3"><span class="sina-step-number">3</span> انتخاب ساعت</div>
+    <div class="sina-step" data-step="4"><span class="sina-step-number">4</span> ثبت اطلاعات</div>
+    <div class="sina-step" data-step="5"><span class="sina-step-number">5</span> تایید نهایی</div>
+  </div>
+
+  <div class="sina-section" id="sinaDoctorsSection">
+    <h2 class="sina-section-title">👨‍⚕️ پزشک خود را انتخاب کنید</h2>
+    <div class="sina-doctors-grid">
+      <div class="sina-doctor-card" data-id="1">
+        <div class="sina-doctor-avatar-placeholder">س</div>
+        <h3 class="sina-doctor-name">دکتر سارا احمدی</h3>
+        <div style="text-align:center;"><span class="sina-doctor-specialty">متخصص قلب و عروق</span></div>
+        <p class="sina-doctor-bio">پزشک متخصص با بیش از 10 سال سابقه درخشان در زمینه قلب و عروق</p>
+        <div class="sina-doctor-fee">ویزیت: <strong>350,000 تومان</strong></div>
+      </div>
+      <div class="sina-doctor-card" data-id="2">
+        <div class="sina-doctor-avatar-placeholder" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);">ع</div>
+        <h3 class="sina-doctor-name">دکتر علی رضایی</h3>
+        <div style="text-align:center;"><span class="sina-doctor-specialty">متخصص مغز و اعصاب</span></div>
+        <p class="sina-doctor-bio">فلوشیپ مغز و اعصاب از دانشگاه تهران</p>
+        <div class="sina-doctor-fee">ویزیت: <strong>400,000 تومان</strong></div>
+      </div>
+      <div class="sina-doctor-card" data-id="3">
+        <div class="sina-doctor-avatar-placeholder" style="background:linear-gradient(135deg,#10b981,#06b6d4);">م</div>
+        <h3 class="sina-doctor-name">دکتر مریم حسینی</h3>
+        <div style="text-align:center;"><span class="sina-doctor-specialty">متخصص زنان و زایمان</span></div>
+        <p class="sina-doctor-bio">متخصص زنان، زایمان و نازایی</p>
+        <div class="sina-doctor-fee">ویزیت: <strong>300,000 تومان</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sina-section" id="sinaDatesSection" style="display:none;">
+    <h2 class="sina-section-title">📅 روز مورد نظر را انتخاب کنید</h2>
+    <div id="sinaDatesGrid" class="sina-dates-grid"></div>
+  </div>
+
+  <div class="sina-section" id="sinaSlotsSection" style="display:none;">
+    <h2 class="sina-section-title">⏰ ساعت نوبت را انتخاب کنید</h2>
+    <div id="sinaSlotsGrid" class="sina-slots-grid"></div>
+    <div class="sina-alert sina-alert-info" style="margin-top:16px;">💡 هزینه رزرو نوبت: <strong>5,000 تومان</strong></div>
+  </div>
+
+  <div class="sina-section" id="sinaFormSection" style="display:none;">
+    <h2 class="sina-section-title">📝 اطلاعات بیمار</h2>
+    <form id="sinaBookingForm">
+      <div class="sina-form-grid">
+        <div class="sina-form-group"><label>نام و نام خانوادگی *</label><input type="text" name="patient_name" class="sina-input" required placeholder="علی احمدی"></div>
+        <div class="sina-form-group"><label>شماره موبایل *</label><input type="tel" name="patient_phone" class="sina-input" required placeholder="09123456789"></div>
+        <div class="sina-form-group"><label>کد ملی</label><input type="text" class="sina-input" placeholder="0012345678"></div>
+        <div class="sina-form-group"><label>سن</label><input type="number" class="sina-input" placeholder="30"></div>
+      </div>
+      <div class="sina-form-group"><label>توضیحات</label><textarea class="sina-textarea" rows="2" placeholder="علائم..."></textarea></div>
+      <div style="text-align:center; margin-top:20px;">
+        <button type="submit" class="sina-btn sina-btn-primary sina-btn-lg">✅ تایید و ثبت نوبت - 5,000 تومان</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="sina-section" id="sinaSuccessSection" style="display:none;">
+    <div class="sina-success-box">
+      <div class="sina-success-icon">✓</div>
+      <h2 style="color:#15803d;">نوبت شما با موفقیت ثبت شد!</h2>
+      <div class="sina-tracking-code" id="sinaSuccessCode">SINA-A1B2C3D4</div>
+      <div style="display:flex; gap:12px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
+        <button onclick="switchTab('print')" class="sina-btn sina-btn-primary">🖨️ چاپ رسید</button>
+        <button onclick="switchTab('patient')" class="sina-btn sina-btn-secondary">📋 نوبت‌های من</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PATIENT TAB -->
+<div id="tab-patient" class="sina-booking-wrapper hidden">
+  <div class="sina-section">
+    <h2 class="sina-section-title">👤 پنل بیمار - نوبت‌های من</h2>
+    <p>سلام <strong>علی احمدی</strong> عزیز</p>
+  </div>
+  <div class="sina-appointments-list">
+    <div class="sina-appointment-card">
+      <div class="sina-appointment-info">
+        <h4>دکتر سارا احمدی - متخصص قلب</h4>
+        <div class="sina-appointment-meta"><span>📅 15 مرداد 1404</span><span>⏰ 10:30</span><span>🔖 SINA-A1B2C3D4</span><span>💰 350,000 تومان</span></div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <span class="sina-status-badge sina-status-confirmed">تایید شده</span>
+        <button onclick="switchTab('print')" class="sina-btn sina-btn-secondary" style="font-size:12px;">🖨️ چاپ</button>
+      </div>
+    </div>
+    <div class="sina-appointment-card">
+      <div class="sina-appointment-info">
+        <h4>دکتر علی رضایی - مغز و اعصاب</h4>
+        <div class="sina-appointment-meta"><span>📅 10 مرداد 1404</span><span>⏰ 11:00</span><span>🔖 SINA-X9Y8Z7</span><span>💰 400,000 تومان</span></div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <span class="sina-status-badge sina-status-visited">ویزیت شده</span>
+        <button class="sina-btn sina-btn-secondary" style="font-size:12px;">🖨️ چاپ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECRETARY TAB -->
+<div id="tab-secretary" class="sina-booking-wrapper hidden">
+  <div class="sina-section">
+    <div class="sina-secretary-header">
+      <h2 class="sina-section-title" style="margin:0;">📋 پنل منشی - امروز</h2>
+      <button class="sina-btn sina-btn-secondary" onclick="window.print()">🖨️ چاپ لیست</button>
+    </div>
+    <div class="sina-filters">
+      <select class="sina-select"><option>همه پزشکان</option><option selected>دکتر سارا احمدی</option></select>
+      <input type="date" class="sina-input" value="2025-08-29">
+      <select class="sina-select"><option>همه وضعیت‌ها</option><option selected>تایید شده</option></select>
+      <input type="text" class="sina-input" placeholder="جستجو..." style="min-width:200px;">
+    </div>
+  </div>
+
+  <div class="sina-appointments-list">
+    <div class="sina-appointment-card" style="flex-direction:column; align-items:stretch;">
+      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+        <div>
+          <h4 style="margin:0 0 8px;">علی احمدی <small style="color:#64748b;">(09123456789)</small></h4>
+          <div class="sina-appointment-meta"><span>👨‍⚕️ دکتر سارا احمدی</span><span>📅 15 مرداد - ⏰ 10:30</span><span>🔖 SINA-A1B2C3D4</span></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px; min-width:200px;">
+          <select class="sina-select" style="font-size:13px; padding:6px;"><option>در انتظار</option><option selected>تایید شده</option><option>ویزیت شده</option></select>
+          <select class="sina-select" style="font-size:13px; padding:6px;"><option>پرداخت نشده</option><option selected>پرداخت شده</option></select>
+        </div>
+      </div>
+      <div style="background:#f8fafc; padding:16px; border-radius:10px; margin-top:12px; border:1px solid #e2e8f0;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+          <div>
+            <label style="font-size:12px; font-weight:600;">خدمات:</label>
+            <div style="margin-top:6px; background:white; padding:8px; border-radius:8px; border:1px solid #e2e8f0;">
+              <label style="display:flex; gap:6px; font-size:13px; padding:4px 0;"><input type="checkbox" checked> ویزیت اولیه - 350,000 ت</label>
+              <label style="display:flex; gap:6px; font-size:13px; padding:4px 0;"><input type="checkbox" checked> نوار قلب - 150,000 ت</label>
+              <label style="display:flex; gap:6px; font-size:13px; padding:4px 0;"><input type="checkbox"> اکو قلب - 400,000 ت</label>
+            </div>
+          </div>
+          <div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+              <div><label style="font-size:12px;">مبلغ کل:</label><input type="number" class="sina-input" value="500000" style="padding:8px; font-size:13px;"></div>
+              <div><label style="font-size:12px;">پرداختی:</label><input type="number" class="sina-input" value="5000" style="padding:8px; font-size:13px;"></div>
+            </div>
+            <div style="margin-top:8px;"><label style="font-size:12px;">تاریخ ویزیت واقعی:</label><input type="datetime-local" class="sina-input" style="padding:8px; font-size:13px;"></div>
+          </div>
+          <div>
+            <label style="font-size:12px;">یادداشت منشی:</label><textarea class="sina-textarea" rows="3" style="font-size:13px;">بیمار فشار خون بالا دارد</textarea>
+            <div style="display:flex; gap:6px; margin-top:8px;">
+              <button class="sina-btn sina-btn-primary" style="flex:1; font-size:12px;">💾 ذخیره</button>
+              <button class="sina-btn sina-btn-success" style="font-size:12px;">🧮 محاسبه</button>
+              <button class="sina-btn sina-btn-secondary" style="font-size:12px;" onclick="switchTab('print')">🖨️</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sina-appointment-card" style="flex-direction:column; align-items:stretch;">
+      <div style="display:flex; justify-content:space-between; gap:16px;">
+        <div>
+          <h4 style="margin:0 0 8px;">مریم حسینی <small>(09121234567)</small></h4>
+          <div class="sina-appointment-meta"><span>📅 15 مرداد - ⏰ 11:00</span><span>🔖 SINA-B2C3D4E5</span></div>
+        </div>
+        <span class="sina-status-badge sina-status-pending">در انتظار</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRINT TAB -->
+<div id="tab-print" class="hidden" style="background:#f1f5f9; padding:20px; min-height:100vh;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:20px; background:white; padding:16px; border-radius:12px;">
+      <h2>🖨️ پیش‌نمایش چاپ - حرارتی 80mm و A4</h2>
+      <button class="sina-btn sina-btn-primary" onclick="window.print()">🖨️ چاپ</button>
+      <p style="font-size:12px; color:#64748b; margin-top:8px;">برای پرینتر حرارتی سایز کاغذ را 80mm تنظیم کنید</p>
+    </div>
+    
+    <div style="display:flex; gap:30px; justify-content:center; flex-wrap:wrap; align-items:flex-start;">
+      <!-- Thermal -->
+      <div style="width:80mm; background:white; padding:6mm; font-size:11px; line-height:1.5; box-shadow:0 4px 20px rgba(0,0,0,0.1); border:1px dashed #ccc;">
+        <div style="text-align:center;">
+          <h1 style="font-size:14px; margin:0 0 4px;">کلینیک سینا</h1>
+          <div style="font-size:9px; color:#555;">تهران، خیابان ولیعصر، پلاک 123</div>
+          <div style="font-size:9px;">☎ 021-12345678</div>
+        </div>
+        <div style="border-top:1px dashed #000; margin:8px 0;"></div>
+        <div style="text-align:center; font-size:9px;">رسید نوبت دهی</div>
+        <div style="font-size:16px; font-weight:900; border:2px solid #000; padding:6px; text-align:center; margin:10px 0; letter-spacing:1px;">SINA-A1B2C3D4</div>
+        <div style="border-top:1px dashed #000; margin:8px 0;"></div>
+        <div style="display:flex; justify-content:space-between; margin:3px 0;"><span>بیمار:</span><span style="font-weight:700;">علی احمدی</span></div>
+        <div style="display:flex; justify-content:space-between; margin:3px 0;"><span>موبایل:</span><span>09123456789</span></div>
+        <div style="display:flex; justify-content:space-between; margin:3px 0;"><span>کد ملی:</span><span>0012345678</span></div>
+        <div style="border-top:1px dashed #000; margin:8px 0;"></div>
+        <div style="display:flex; justify-content:space-between;"><span>پزشک:</span><span style="font-weight:700;">دکتر سارا احمدی</span></div>
+        <div style="display:flex; justify-content:space-between;"><span>تخصص:</span><span>متخصص قلب</span></div>
+        <div style="border-top:1px dashed #000; margin:8px 0;"></div>
+        <div style="display:flex; justify-content:space-between;"><span>تاریخ:</span><span style="font-weight:700;">15 مرداد 1404</span></div>
+        <div style="display:flex; justify-content:space-between;"><span>ساعت:</span><span style="font-weight:700; font-size:13px;">10:30</span></div>
+        <div style="border-top:1px dashed #000; margin:8px 0;"></div>
+        <div style="display:flex; justify-content:space-between;"><span>بیعانه:</span><span>5,000 تومان</span></div>
+        <div style="display:flex; justify-content:space-between;"><span>ویزیت:</span><span>350,000 تومان</span></div>
+        <div style="margin:6px 0; font-weight:700;">خدمات:</div>
+        <div style="display:flex; justify-content:space-between; font-size:9px;"><span>- نوار قلب</span><span>150,000</span></div>
+        <div style="border-top:1px dashed #000; margin:8px 0;"></div>
+        <div style="display:flex; justify-content:space-between; font-weight:700; font-size:13px;"><span>جمع کل:</span><span>500,000 تومان</span></div>
+        <div style="display:flex; justify-content:space-between;"><span>پرداختی:</span><span>5,000 تومان</span></div>
+        <div style="display:flex; justify-content:space-between; font-weight:700;"><span>مانده:</span><span>495,000 تومان</span></div>
+        <div style="border-top:1px dashed #000; margin:8px 0;"></div>
+        <div style="text-align:center; font-size:9px; color:#555;">لطفا 15 دقیقه قبل حضور داشته باشید<br>همراه داشتن کارت ملی الزامی است<br>2025/08/29 10:30</div>
+        <div style="text-align:center; font-family:monospace; font-size:10px; margin:8px 0; letter-spacing:2px;">*SINA-A1B2C3D4*</div>
+        <div style="text-align:center; font-size:9px;">با تشکر از انتخاب شما ❤️</div>
+      </div>
+
+      <!-- A4 -->
+      <div style="width:210mm; background:white; padding:15mm; box-shadow:0 4px 20px rgba(0,0,0,0.1); font-size:13px;">
+        <div style="display:flex; justify-content:space-between; border-bottom:3px solid #0ea5e9; padding-bottom:15px; margin-bottom:20px;">
+          <div><div style="font-size:22px; font-weight:800; color:#0ea5e9;">کلینیک سینا</div><div style="font-size:12px; color:#64748b;">تهران، ولیعصر، پلاک 123<br>تلفن: 021-12345678</div></div>
+          <div style="text-align:left;"><div style="font-size:18px; font-weight:800;">رسید نوبت پزشکی</div><div style="font-size:12px; color:#64748b;">تاریخ صدور: 1404/05/15</div><div style="margin-top:8px; background:#f0f9ff; padding:6px 12px; border-radius:6px; border:1px solid #0ea5e9; font-weight:700;">SINA-A1B2C3D4</div></div>
+        </div>
+        <table style="width:100%; border-collapse:collapse;"><tr><th colspan="2" style="background:#0ea5e9; color:white; padding:10px; border:1px solid #e2e8f0; text-align:right;">اطلاعات بیمار</th><th colspan="2" style="background:#0ea5e9; color:white; padding:10px; border:1px solid #e2e8f0; text-align:right;">اطلاعات نوبت</th></tr>
+        <tr><td style="background:#f8fafc; padding:10px; border:1px solid #e2e8f0;">نام بیمار</td><td style="padding:10px; border:1px solid #e2e8f0;">علی احمدی</td><td style="background:#f8fafc; padding:10px; border:1px solid #e2e8f0;">پزشک</td><td style="padding:10px; border:1px solid #e2e8f0;">دکتر سارا احمدی</td></tr>
+        <tr><td style="background:#f8fafc; padding:10px; border:1px solid #e2e8f0;">موبایل</td><td style="padding:10px; border:1px solid #e2e8f0;">09123456789</td><td style="background:#f8fafc; padding:10px; border:1px solid #e2e8f0;">تاریخ</td><td style="padding:10px; border:1px solid #e2e8f0;"><strong>15 مرداد 1404</strong></td></tr>
+        </table>
+        <h3 style="margin:20px 0 10px;">💰 صورتحساب</h3>
+        <table style="width:100%; border-collapse:collapse;"><thead><tr><th style="border:1px solid #e2e8f0; padding:10px; background:#f8fafc;">ردیف</th><th style="border:1px solid #e2e8f0; padding:10px; background:#f8fafc;">شرح</th><th style="border:1px solid #e2e8f0; padding:10px; background:#f8fafc;">مبلغ</th></tr></thead>
+        <tbody><tr><td style="border:1px solid #e2e8f0; padding:10px;">1</td><td style="border:1px solid #e2e8f0; padding:10px;">ویزیت دکتر سارا احمدی</td><td style="border:1px solid #e2e8f0; padding:10px;">350,000</td></tr><tr><td style="border:1px solid #e2e8f0; padding:10px;">2</td><td style="border:1px solid #e2e8f0; padding:10px;">نوار قلب</td><td style="border:1px solid #e2e8f0; padding:10px;">150,000</td></tr><tr style="background:#f0fdf4; font-weight:700;"><td colspan="2" style="border:1px solid #e2e8f0; padding:10px;">جمع کل</td><td style="border:1px solid #e2e8f0; padding:10px;">500,000 تومان</td></tr></tbody></table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add('hidden'));
+  document.getElementById('tab-' + tab).classList.remove('hidden');
+  document.querySelectorAll('.demo-nav button').forEach(b => b.classList.remove('active'));
+  document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+document.querySelectorAll('.demo-nav button').forEach(btn => {
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+});
+
+// Booking demo logic
+let selectedDoctor = null;
+const mockDates = [
+  {date:'2025-08-30', jalali:'8 شهریور 1404', day:'شنبه', free:5},
+  {date:'2025-08-31', jalali:'9 شهریور 1404', day:'یکشنبه', free:3},
+  {date:'2025-09-01', jalali:'10 شهریور 1404', day:'دوشنبه', free:8},
+  {date:'2025-09-02', jalali:'11 شهریور 1404', day:'سه‌شنبه', free:2},
+  {date:'2025-09-03', jalali:'12 شهریور 1404', day:'چهارشنبه', free:6},
+];
+const mockSlots = [
+  {time:'09:00', booked:false}, {time:'09:15', booked:false}, {time:'09:30', booked:true},
+  {time:'09:45', booked:false}, {time:'10:00', booked:false}, {time:'10:15', booked:false},
+  {time:'10:30', booked:false}, {time:'10:45', booked:true}, {time:'11:00', booked:false},
+];
+
+document.querySelectorAll('.sina-doctor-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.sina-doctor-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    selectedDoctor = card.dataset.id;
+    document.getElementById('sinaDatesSection').style.display = 'block';
+    document.getElementById('sinaSlotsSection').style.display = 'none';
+    document.getElementById('sinaFormSection').style.display = 'none';
+    document.getElementById('sinaSuccessSection').style.display = 'none';
+    renderDates();
+    document.querySelectorAll('.sina-step').forEach(s => s.classList.remove('active','completed'));
+    document.querySelector('[data-step="1"]').classList.add('completed');
+    document.querySelector('[data-step="2"]').classList.add('active');
+    document.getElementById('sinaDatesSection').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+function renderDates() {
+  const grid = document.getElementById('sinaDatesGrid');
+  grid.innerHTML = mockDates.map(d => `
+    <div class="sina-date-card" data-date="${d.date}">
+      <div class="sina-date-dayname">${d.day}</div>
+      <div class="sina-date-jalali">${d.jalali}</div>
+      <div class="sina-date-free">${d.free} نوبت خالی</div>
+    </div>
+  `).join('');
+  grid.querySelectorAll('.sina-date-card').forEach(el => {
+    el.addEventListener('click', () => {
+      grid.querySelectorAll('.sina-date-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('sinaSlotsSection').style.display = 'block';
+      renderSlots();
+      document.querySelectorAll('.sina-step').forEach(s => s.classList.remove('active','completed'));
+      document.querySelector('[data-step="1"]').classList.add('completed');
+      document.querySelector('[data-step="2"]').classList.add('completed');
+      document.querySelector('[data-step="3"]').classList.add('active');
+      document.getElementById('sinaSlotsSection').scrollIntoView({behavior:'smooth'});
+    });
+  });
+}
+
+function renderSlots() {
+  const grid = document.getElementById('sinaSlotsGrid');
+  grid.innerHTML = mockSlots.map(s => `
+    <div class="sina-slot ${s.booked ? 'booked' : ''}" data-time="${s.time}">
+      <div class="sina-slot-time">${s.time}</div>
+      ${s.booked ? '<small>رزرو شده</small>' : ''}
+    </div>
+  `).join('');
+  grid.querySelectorAll('.sina-slot:not(.booked)').forEach(el => {
+    el.addEventListener('click', () => {
+      grid.querySelectorAll('.sina-slot').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('sinaFormSection').style.display = 'block';
+      document.querySelectorAll('.sina-step').forEach(s => s.classList.remove('active','completed'));
+      document.querySelector('[data-step="1"]').classList.add('completed');
+      document.querySelector('[data-step="2"]').classList.add('completed');
+      document.querySelector('[data-step="3"]').classList.add('completed');
+      document.querySelector('[data-step="4"]').classList.add('active');
+      document.getElementById('sinaFormSection').scrollIntoView({behavior:'smooth'});
+    });
+  });
+}
+
+document.getElementById('sinaBookingForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  document.getElementById('sinaFormSection').style.display = 'none';
+  document.getElementById('sinaSuccessSection').style.display = 'block';
+  document.querySelectorAll('.sina-step').forEach(s => s.classList.remove('active','completed'));
+  document.querySelectorAll('.sina-step').forEach(s => { if(parseInt(s.dataset.step) < 5) s.classList.add('completed'); });
+  document.querySelector('[data-step="5"]').classList.add('active');
+  document.getElementById('sinaSuccessSection').scrollIntoView({behavior:'smooth'});
+});
+</script>
+
+</body>
+</html>

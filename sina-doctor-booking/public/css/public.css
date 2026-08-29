@@ -1,0 +1,487 @@
+/* Sina Doctor Booking - Public Styles - RTL Modern UI */
+:root {
+  --sina-primary: #0ea5e9;
+  --sina-primary-dark: #0284c7;
+  --sina-success: #10b981;
+  --sina-danger: #ef4444;
+  --sina-warning: #f59e0b;
+  --sina-bg: #f8fafc;
+  --sina-card: #ffffff;
+  --sina-text: #0f172a;
+  --sina-text-muted: #64748b;
+  --sina-border: #e2e8f0;
+  --sina-radius: 16px;
+  --sina-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+  --sina-shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+}
+
+.sina-booking-wrapper {
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  direction: rtl;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: var(--sina-text);
+  line-height: 1.7;
+}
+
+/* Doctors Grid */
+.sina-doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+.sina-doctors-grid.cols-1 { grid-template-columns: 1fr; }
+.sina-doctors-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.sina-doctors-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+.sina-doctor-card {
+  background: var(--sina-card);
+  border: 1px solid var(--sina-border);
+  border-radius: var(--sina-radius);
+  padding: 24px;
+  box-shadow: var(--sina-shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.sina-doctor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sina-shadow-lg);
+  border-color: var(--sina-primary);
+}
+.sina-doctor-card.active {
+  border-color: var(--sina-primary);
+  background: #f0f9ff;
+  box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+}
+.sina-doctor-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 16px;
+  display: block;
+  border: 3px solid #e0f2fe;
+}
+.sina-doctor-avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 auto 16px;
+}
+.sina-doctor-name {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 8px;
+  color: var(--sina-text);
+}
+.sina-doctor-specialty {
+  text-align: center;
+  color: var(--sina-primary);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 12px;
+  background: #e0f2fe;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  width: auto;
+}
+.sina-doctor-bio {
+  font-size: 13px;
+  color: var(--sina-text-muted);
+  text-align: center;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.sina-doctor-fee {
+  text-align: center;
+  font-size: 14px;
+  color: var(--sina-text);
+  background: #f8fafc;
+  padding: 8px;
+  border-radius: 8px;
+}
+.sina-doctor-fee strong { color: var(--sina-success); }
+
+/* Booking Steps */
+.sina-booking-steps {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin: 30px 0;
+  background: var(--sina-card);
+  border-radius: var(--sina-radius);
+  padding: 16px;
+  box-shadow: var(--sina-shadow);
+  overflow-x: auto;
+}
+.sina-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sina-text-muted);
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+.sina-step.active {
+  background: var(--sina-primary);
+  color: white;
+}
+.sina-step.completed {
+  background: #dcfce7;
+  color: #15803d;
+}
+.sina-step-number {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: currentColor;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.sina-step.active .sina-step-number { background: white; color: var(--sina-primary); }
+.sina-step.completed .sina-step-number { background: #15803d; }
+
+/* Section */
+.sina-section {
+  background: var(--sina-card);
+  border: 1px solid var(--sina-border);
+  border-radius: var(--sina-radius);
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: var(--sina-shadow);
+}
+.sina-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sina-section-title::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: var(--sina-primary);
+  border-radius: 2px;
+}
+
+/* Dates Grid */
+.sina-dates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.sina-date-card {
+  border: 2px solid var(--sina-border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--sina-card);
+}
+.sina-date-card:hover {
+  border-color: var(--sina-primary);
+  background: #f0f9ff;
+}
+.sina-date-card.active {
+  border-color: var(--sina-primary);
+  background: var(--sina-primary);
+  color: white;
+}
+.sina-date-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f1f5f9;
+}
+.sina-date-dayname { font-size: 13px; font-weight: 600; opacity: 0.8; }
+.sina-date-jalali { font-size: 15px; font-weight: 700; margin: 4px 0; }
+.sina-date-free { font-size: 12px; background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 10px; display: inline-block; margin-top: 4px; }
+.sina-date-card.active .sina-date-free { background: rgba(255,255,255,0.2); color: white; }
+
+/* Slots Grid */
+.sina-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+}
+.sina-slot {
+  border: 2px solid var(--sina-border);
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+  background: white;
+  position: relative;
+}
+.sina-slot:hover:not(.booked):not(.blocked) {
+  border-color: var(--sina-primary);
+  background: #f0f9ff;
+  transform: scale(1.02);
+}
+.sina-slot.active {
+  background: var(--sina-primary);
+  color: white;
+  border-color: var(--sina-primary);
+}
+.sina-slot.booked {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+.sina-slot.blocked {
+  background: #fef2f2;
+  color: #dc2626;
+  cursor: not-allowed;
+  border-color: #fecaca;
+}
+.sina-slot-time { font-size: 16px; }
+
+/* Form */
+.sina-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+.sina-form-group { margin-bottom: 16px; }
+.sina-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--sina-text);
+}
+.sina-input, .sina-select, .sina-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--sina-border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: all 0.2s;
+  background: white;
+  box-sizing: border-box;
+}
+.sina-input:focus, .sina-select:focus, .sina-textarea:focus {
+  outline: none;
+  border-color: var(--sina-primary);
+  box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+}
+.sina-input.error { border-color: var(--sina-danger); }
+
+/* Buttons */
+.sina-btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.sina-btn-primary {
+  background: var(--sina-primary);
+  color: white;
+}
+.sina-btn-primary:hover { background: var(--sina-primary-dark); transform: translateY(-1px); }
+.sina-btn-success { background: var(--sina-success); color: white; }
+.sina-btn-danger { background: var(--sina-danger); color: white; }
+.sina-btn-secondary { background: #f1f5f9; color: var(--sina-text); border: 1px solid var(--sina-border); }
+.sina-btn-lg { padding: 14px 32px; font-size: 16px; }
+.sina-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Alerts */
+.sina-alert {
+  padding: 16px;
+  border-radius: 10px;
+  margin: 16px 0;
+  font-size: 14px;
+  border: 1px solid;
+}
+.sina-alert-info { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+.sina-alert-success { background: #f0fdf4; border-color: #bbf7d0; color: #15803d; }
+.sina-alert-warning { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+.sina-alert-danger { background: #fef2f2; border-color: #fecaca; color: #b91c1c; }
+
+/* Success Box */
+.sina-success-box {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 2px solid #22c55e;
+  border-radius: var(--sina-radius);
+}
+.sina-success-icon {
+  width: 80px;
+  height: 80px;
+  background: #22c55e;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin: 0 auto 20px;
+}
+.sina-tracking-code {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: 2px dashed #22c55e;
+  display: inline-block;
+  margin: 16px 0;
+  color: var(--sina-text);
+}
+
+/* Announcements */
+.sina-announcements { margin: 20px 0; }
+.sina-announcement {
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border-right: 4px solid;
+}
+.sina-announcement.info { background: #eff6ff; border-color: #3b82f6; }
+.sina-announcement.warning { background: #fffbeb; border-color: #f59e0b; }
+.sina-announcement.danger { background: #fef2f2; border-color: #ef4444; }
+.sina-announcement.success { background: #f0fdf4; border-color: #22c55e; }
+
+/* Loading */
+.sina-loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--sina-text-muted);
+}
+.sina-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e2e8f0;
+  border-top-color: var(--sina-primary);
+  border-radius: 50%;
+  animation: sina-spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+@keyframes sina-spin { to { transform: rotate(360deg); } }
+
+/* Patient Panel */
+.sina-appointments-list { display: flex; flex-direction: column; gap: 16px; }
+.sina-appointment-card {
+  background: white;
+  border: 1px solid var(--sina-border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s;
+}
+.sina-appointment-card:hover { box-shadow: var(--sina-shadow); }
+.sina-appointment-info h4 { margin: 0 0 4px; font-size: 16px; }
+.sina-appointment-meta { font-size: 13px; color: var(--sina-text-muted); display: flex; gap: 12px; flex-wrap: wrap; }
+.sina-status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.sina-status-pending { background: #fef3c7; color: #92400e; }
+.sina-status-confirmed { background: #dbeafe; color: #1e40af; }
+.sina-status-visited { background: #dcfce7; color: #15803d; }
+.sina-status-cancelled { background: #fee2e2; color: #b91c1c; }
+
+/* Tracking */
+.sina-tracking-input-wrap {
+  display: flex;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.sina-tracking-result { margin-top: 20px; }
+
+/* Secretary Panel */
+.sina-secretary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.sina-filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--sina-border);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sina-doctors-grid { grid-template-columns: 1fr; }
+  .sina-dates-grid { grid-template-columns: repeat(2, 1fr); }
+  .sina-slots-grid { grid-template-columns: repeat(3, 1fr); }
+  .sina-form-grid { grid-template-columns: 1fr; }
+  .sina-appointment-card { flex-direction: column; align-items: flex-start; }
+  .sina-tracking-input-wrap { flex-direction: column; }
+}
+
+/* Print Styles - Thermal 80mm */
+@media print {
+  body * { visibility: hidden; }
+  .sina-print-area, .sina-print-area * { visibility: visible; }
+  .sina-print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm;
+    padding: 5mm;
+    font-family: 'Vazirmatn', monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    color: black;
+    background: white;
+  }
+  .sina-no-print { display: none !important; }
+}
+
+/* Utility */
+.sina-hidden { display: none !important; }
+.sina-text-center { text-align: center; }
+.sina-mt-20 { margin-top: 20px; }
+.sina-mb-20 { margin-bottom: 20px; }

@@ -1,0 +1,23 @@
+# Sina Doctor Booking Persian Translation
+msgid ""
+msgstr ""
+"Project-Id-Version: Sina Doctor Booking 1.0.0\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Please select a day"
+msgstr "لطفا یک روز را انتخاب کنید"
+
+msgid "Please select a time"
+msgstr "لطفا یک ساعت را انتخاب کنید"
+
+msgid "Loading..."
+msgstr "در حال بارگذاری..."
+
+msgid "No empty slots on this day"
+msgstr "در این روز نوبت خالی وجود ندارد"
+
+msgid "Your appointment was successfully registered"
+msgstr "نوبت شما با موفقیت ثبت شد"

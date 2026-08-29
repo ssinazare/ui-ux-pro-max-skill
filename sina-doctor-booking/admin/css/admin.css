@@ -1,0 +1,122 @@
+/* Sina Booking Admin */
+.sina-admin-wrap {
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    direction: rtl;
+    max-width: 1400px;
+}
+.sina-admin-header {
+    background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+    color: white;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sina-admin-header h1 { color: white; margin: 0; font-size: 22px; }
+.sina-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.sina-stat-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.sina-stat-number { font-size: 28px; font-weight: 800; color: #0f172a; }
+.sina-stat-label { font-size: 13px; color: #64748b; }
+.sina-stat-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.sina-admin-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.sina-form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.sina-admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+.sina-admin-table th, .sina-admin-table td {
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    text-align: right;
+    font-size: 13px;
+}
+.sina-admin-table th { background: #f8fafc; font-weight: 700; }
+.sina-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+}
+.sina-badge-success { background: #dcfce7; color: #15803d; }
+.sina-badge-warning { background: #fef3c7; color: #92400e; }
+.sina-badge-danger { background: #fee2e2; color: #b91c1c; }
+.sina-badge-info { background: #dbeafe; color: #1e40af; }
+.sina-btn {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+}
+.sina-btn-primary { background: #0ea5e9; color: white; }
+.sina-btn-danger { background: #ef4444; color: white; }
+.sina-btn-success { background: #10b981; color: white; }
+.sina-btn-secondary { background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0; }
+.sina-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+}
+.sina-modal.active { display: flex; }
+.sina-modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.sina-input, .sina-select, .sina-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+}
+.sina-input:focus, .sina-select:focus, .sina-textarea:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+}
